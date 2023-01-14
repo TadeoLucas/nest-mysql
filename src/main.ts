@@ -6,13 +6,14 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Mi app documentation')
+    .setTitle('My api Documentation')
     .setDescription('The users API description')
     .setVersion('1.0')
     .addTag('users')
+    .addTag('role')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('documentation', app, document);
+  SwaggerModule.setup('doc', app, document);
 
   await app.listen(3000);
 }
