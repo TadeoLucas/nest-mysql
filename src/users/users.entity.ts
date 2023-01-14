@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { Role } from 'src/role/role.entity';
+import { Entity, Column, PrimaryColumn, ManyToOne } from 'typeorm';
 // import { v4 as uuid } from 'uuid';
 
 @Entity()
@@ -21,4 +22,7 @@ export class User {
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date
+
+  @ManyToOne(() => Role, role => role.roles )
+  user: User
 }

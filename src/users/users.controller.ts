@@ -1,10 +1,11 @@
 import { Controller, Post, Get, Delete, Patch, Body, Param, HttpException } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from './Dto/create-user.dto';
 import { UpdateUserDto } from './Dto/update-user.dto';
 import { User } from './users.entity';
 import { UsersService } from './users.service';
 
-
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
   constructor(private userService: UsersService) { }
