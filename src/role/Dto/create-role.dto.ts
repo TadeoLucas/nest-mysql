@@ -1,4 +1,6 @@
+
+export type ACCES_TYPES = "SUDO" | "ADMIN" | "EDITOR" | "USER" | "VISITOR";
+
 export class CreateRoleDto {
-  id: string
-  access: string
+  access: ACCES_TYPES
 }
