@@ -12,7 +12,9 @@ export class UsersController {
 
   @Post()
   async createUser(@Body() newUser: CreateUserDto): Promise<User | HttpException> {
-    return this.userService.createUserService(newUser)
+    const user = await this.userService.createUserService(newUser)
+    delete user.password
+    return user
   }
 
 @Get()
