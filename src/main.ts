@@ -20,7 +20,7 @@ async function bootstrap() {
   SwaggerModule.setup('doc', app, document);
 
   await app.listen(3000);
-  await defaultCreateRoles();
+  // await defaultCreateRoles();
 }
 bootstrap();
 
