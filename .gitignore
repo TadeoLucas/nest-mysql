@@ -3,6 +3,7 @@
 /node_modules
 .env
 .yml
+/auth/constants
 
 # Logs
 logs

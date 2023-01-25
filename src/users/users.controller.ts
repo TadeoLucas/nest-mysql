@@ -10,30 +10,30 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private userService: UsersService) { }
 
-  @Post()
+  @Post('create')
   async createUser(@Body() newUser: CreateUserDto): Promise<User | HttpException> {
     const user = await this.userService.createUserService(newUser)
     delete user.password
     return user
   }
 
-@Get()
-getAll(): Promise < User[] > {
-  return this.userService.findAllServices()
-}
+  @Get()
+  getAll(): Promise<User[]> {
+    return this.userService.findAllServices()
+  }
 
-@Get(':email')
-getUserByAnyColumn(@Param('email') email: string): Promise < User > {
-  return this.userService.findUserServices(email)
-}
+  @Get(':email')
+  getUserByEmail(@Param('email') email: string): Promise<User> {
+    return this.userService.findUserByEmailServices(email)
+  }
 
-@Delete(':id')
-deleteUSer(@Param('id') id: string) {
-  return this.userService.deleteUserServices(id)
-}
+  @Delete(':id')
+  deleteUSer(@Param('id') id: string) {
+    return this.userService.deleteUserServices(id)
+  }
 
-@Patch(':id')
-updateUser(@Param('id') id: string, @Body() user: UpdateUserDto) {
-  return this.userService.updateUserServices(id, user)
-}
+  @Patch(':id')
+  updateUser(@Param('id') id: string, @Body() user: UpdateUserDto) {
+    return this.userService.updateUserServices(id, user)
+  }
 }

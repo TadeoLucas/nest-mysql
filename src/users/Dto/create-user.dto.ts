@@ -1,4 +1,4 @@
-import { IsString, IsEmail, IsEnum, IsUUID, Matches } from "class-validator";
+import { IsString, IsEmail, IsUUID, Matches } from "class-validator";
 
 // export class CreateUserDto {
 //   username: string
@@ -7,10 +7,10 @@ import { IsString, IsEmail, IsEnum, IsUUID, Matches } from "class-validator";
 //   email: string
 // }
 
-export enum STATUS_TYPES {
-  PENDING = "PENDING",
-  ACTIVE = "ACTIVE",
-  INACTIVE = "INACTIVE"
+export const STATUS_TYPES = {
+  PENDING: "PENDING",
+  ACTIVE: "ACTIVE",
+  INACTIVE: "INACTIVE"
 };
 
 
@@ -33,9 +33,9 @@ export class CreateUserDto {
   @IsEmail()
   email: string;
 
-  @IsEnum(STATUS_TYPES)
-  status: STATUS_TYPES;
+  // @IsString()
+  // status: typeof STATUS_TYPES;
 
-  @IsUUID()
-  userId?: string | undefined;
+  // @IsUUID()
+  // userId?: string | undefined;
 }

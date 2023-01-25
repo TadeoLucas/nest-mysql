@@ -22,12 +22,14 @@ export class UsersService {
     return this.userRepository.find()
   }
 
-  findUserServices(email: string) {
-    return this.userRepository.findOne({
-      where: {
-        email
-      }
-    })
+  findUserByEmailServices(email: string) {
+    // para poder extraer el password hasheado desde la base
+    // dado q esta bloqueado desde user.entity 
+    return this.userRepository
+              .createQueryBuilder('user')
+              .where({ email })
+              .addSelect('user.password')
+              .getOne()
   }
 
   updateUserServices(id: string, user: UpdateUserDto) {
